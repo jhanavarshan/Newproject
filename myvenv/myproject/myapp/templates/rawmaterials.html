@@ -1,0 +1,267 @@
+<html>
+    <head>
+        <title>Raw Materials</title>
+        <style>
+                        .modal {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+            .modal-content {
+                background-color: white;
+                margin: 10% auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 50%;
+                text-align: center;
+                position: relative;
+                border-radius: 10px;
+            }
+            .close {
+                position: absolute;
+                top: 10px;
+                right: 20px;
+                font-size: 20px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Raw Materials</h1>
+        
+        <button onclick="openModal('powderModal')">Powder</button>
+        <button onclick="openModal('containersModal')">Containers</button>
+        <button onclick="openModal('capModal')">Cap</button>
+        <button onclick="openModal('pouchesModal')">Pouches</button>
+        <button onclick="openModal('rollModal')">Roll</button>
+        <button onclick="openModal('bagsModal')">Bags</button>
+        <button onclick="openModal('waterModal')">Water</button>
+
+        <div id="powderModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('powderModal')">&times;</span>
+                <h2>Powder</h2>
+                <form>
+                    <label>Quantity (g):</label>
+                    <input type="number" placeholder="Enter quantity"><br><br>
+                    
+                    <label>Select Location:</label>
+                    <select>
+                        <option value="kolathur">Kolathur</option>
+                        <option value="bangalore">Bangalore</option>
+                    </select><br><br>
+
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="containersModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('containersModal')">&times;</span>
+                <h2>Containers</h2>
+                <form>
+                    <label>Select Size:</label>
+                    <select>
+                        <option value="500g">500g</option>
+                        <option value="700g">700g</option>
+                        <option value="300g">300g</option>
+                    </select><br><br>
+
+                    <label>Company Name:</label>
+                    <input type="text" placeholder="Enter company name"><br><br>
+
+                    <label>Containers Count:</label>
+                    <input type="number" placeholder="Enter count"><br><br>
+
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="capModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('capModal')">&times;</span>
+                <h2>Cap</h2>
+                <form>
+                    <label>Select Size:</label>
+                    <select>
+                        <option value="500g">500g</option>
+                        <option value="700g">700g</option>
+                        <option value="300g">300g</option>
+                    </select><br><br>
+
+                    <label>Company Name:</label>
+                    <input type="text" placeholder="Enter company name"><br><br>
+
+                    <label>Cap Count:</label>
+                    <input type="number" placeholder="Enter count"><br><br>
+
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="pouchesModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('pouchesModal')">&times;</span>
+                <h2>Select Pouch Type</h2>
+                <button onclick="showMilkwhite()">Milkwhite</button>
+                <button onclick="showPrinted()">Printed</button>
+            </div>
+        </div>
+
+        <div id="milkwhiteOptions" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('milkwhiteOptions')">&times;</span>
+                <h2>Milkwhite Pouches</h2>
+                <button onclick="openModal('pouch250gForm')">250g</button>
+            </div>
+        </div>
+
+        <div id="printedOptions" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('printedOptions')">&times;</span>
+                <h2>Printed Pouches</h2>
+                <button onclick="openModal('pouch400gForm')">400g</button>
+                <button onclick="openModal('pouch500gForm')">500g</button>
+            </div>
+        </div>
+
+        <div id="pouch250gForm" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('pouch250gForm')">&times;</span>
+                <h2>250g Pouch</h2>
+                <form>
+                    <label>Company Name:</label>
+                    <input type="text" placeholder="Enter company name"><br><br>
+
+                    <label>Input Grams:</label>
+                    <input type="number" placeholder="Enter grams"><br><br>
+
+                    <label>Kilograms (kg's):</label>
+                    <input type="number" placeholder="Enter kg's"><br><br>
+
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="pouch400gForm" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('pouch400gForm')">&times;</span>
+                <h2>400g Pouch</h2>
+                <form>
+                    <label>Company Name:</label>
+                    <input type="text" placeholder="Enter company name"><br><br>
+
+                    <label>Input Grams:</label>
+                    <input type="number" placeholder="Enter grams"><br><br>
+
+                    <label>Kilograms (kg's):</label>
+                    <input type="number" placeholder="Enter kg's"><br><br>
+
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="pouch500gForm" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('pouch500gForm')">&times;</span>
+                <h2>500g Pouch</h2>
+                <form>
+                    <label>Company Name:</label>
+                    <input type="text" placeholder="Enter company name"><br><br>
+
+                    <label>Input Grams:</label>
+                    <input type="number" placeholder="Enter grams"><br><br>
+
+                    <label>Kilograms (kg's):</label>
+                    <input type="number" placeholder="Enter kg's"><br><br>
+
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="rollModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('rollModal')">&times;</span>
+                <h2>Roll</h2>
+                <form>
+                    <label>Quantity (m):</label>
+                    <input type="number" placeholder="Enter length"><br><br>
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="bagsModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('bagsModal')">&times;</span>
+                <h2>Bags</h2>
+                <form>
+                    <label>Bag Type:</label>
+                    <input type="text" placeholder="Enter bag type"><br><br>
+
+                    <label>Quantity:</label>
+                    <input type="number" placeholder="Enter quantity"><br><br>
+
+                    <label>Supplier Name:</label>
+                    <input type="text" placeholder="Enter supplier name"><br><br>
+
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="waterModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('waterModal')">&times;</span>
+                <h2>Water</h2>
+                <form>
+                    <label>Water Type:</label>
+                    <input type="text" placeholder="Enter water type (e.g., Distilled, Mineral)"><br><br>
+
+                    <label>Quantity (Liters):</label>
+                    <input type="number" placeholder="Enter quantity"><br><br>
+
+                    <label>Source:</label>
+                    <input type="text" placeholder="Enter source (e.g., Borewell, RO)"><br><br>
+
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            function openModal(id) {
+                document.getElementById(id).style.display = "block";
+            }
+
+            function closeModal(id) {
+                document.getElementById(id).style.display = "none";
+            }
+            function showMilkwhite() {
+                document.getElementById('milkwhiteOptions').style.display = "block";
+                document.getElementById('printedOptions').style.display = "none";
+            }
+
+            function showPrinted() {
+                document.getElementById('printedOptions').style.display = "block";
+                document.getElementById('milkwhiteOptions').style.display = "none";
+            }
+
+            function toggleForm(id) {
+                let form = document.getElementById(id);
+                form.style.display = form.style.display === "none" ? "block" : "none";
+            }
+        </script>
+    </body>
+</html>
