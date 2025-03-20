@@ -195,8 +195,31 @@
                 <span class="close" onclick="closeModal('rollModal')">&times;</span>
                 <h2>Roll</h2>
                 <form>
-                    <label>Quantity (m):</label>
-                    <input type="number" placeholder="Enter length"><br><br>
+                    <label>Company Name:</label>
+                    <input type="text" placeholder="Enter company name"><br><br>
+
+                    <label>Select GSM:</label>
+                    <select id="gsmSelect" onchange="toggleGSMInput()">
+                        <option value="250gsm">250gsm</option>
+                        <option value="170gsm">170gsm</option>
+                        <option value="other">Other</option>
+                    </select><br><br>
+                    
+                    <div id="manualGSM" style="display: none;">
+                        <label>Enter GSM:</label>
+                        <input type="number" placeholder="Enter GSM"><br><br>
+                    </div>
+
+                    <label>Select Size:</label>
+                    <select>
+                        <option value="400g">400g</option>
+                        <option value="100g">100g</option>
+                        <option value="250g">250g</option>
+                        <option value="200g">200g</option>
+                        <option value="150g">150g</option>
+                        <option value="50g">50g</option>
+                    </select><br><br>
+
                     <button type="submit">Save</button>
                 </form>
             </div>
@@ -261,6 +284,15 @@
             function toggleForm(id) {
                 let form = document.getElementById(id);
                 form.style.display = form.style.display === "none" ? "block" : "none";
+            }
+            function toggleGSMInput() {
+                var gsmSelect = document.getElementById('gsmSelect');
+                var manualGSM = document.getElementById('manualGSM');
+                if (gsmSelect.value === "other") {
+                    manualGSM.style.display = "block";
+                } else {
+                    manualGSM.style.display = "none";
+                }
             }
         </script>
     </body>
