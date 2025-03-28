@@ -335,6 +335,16 @@
                     manualGSM.style.display = "none";
                 }
             }
-        </script><br/>
+            function toggleSheetGSMInput() {
+    var sheetGsmSelect = document.getElementById('sheetGsmSelect');
+    var sheetManualGSM = document.getElementById('sheetManualGSM');
+    if (sheetGsmSelect.value === "other") {
+        sheetManualGSM.style.display = "block";
+    } else {
+        sheetManualGSM.style.display = "none";
+    }
+}
+
+        </script><br/><br/>
     </body>
 </html>
