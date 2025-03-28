@@ -41,6 +41,8 @@
         <button onclick="openModal('rollModal')">Roll</button>
         <button onclick="openModal('bagsModal')">Bags</button>
         <button onclick="openModal('waterModal')">Water</button>
+        <button onclick="openModal('sheetModal')">Sheet</button>
+        <button onclick="openModal('trayModal')">Tray</button>
 
         <div id="powderModal" class="modal">
             <div class="modal-content">
@@ -230,14 +232,11 @@
                 <span class="close" onclick="closeModal('bagsModal')">&times;</span>
                 <h2>Bags</h2>
                 <form>
-                    <label>Bag Type:</label>
-                    <input type="text" placeholder="Enter bag type"><br><br>
+                    <label>Company Name:</label>
+                    <input type="text" placeholder="Enter company name"><br><br>
 
-                    <label>Quantity:</label>
-                    <input type="number" placeholder="Enter quantity"><br><br>
-
-                    <label>Supplier Name:</label>
-                    <input type="text" placeholder="Enter supplier name"><br><br>
+                    <label>Count:</label>
+                    <input type="number" placeholder="Enter count"><br><br>
 
                     <button type="submit">Save</button>
                 </form>
@@ -249,14 +248,56 @@
                 <span class="close" onclick="closeModal('waterModal')">&times;</span>
                 <h2>Water</h2>
                 <form>
-                    <label>Water Type:</label>
-                    <input type="text" placeholder="Enter water type (e.g., Distilled, Mineral)"><br><br>
+                    <label>Date:</label>
+                    <input type="date"><br><br>
 
-                    <label>Quantity (Liters):</label>
+                    <label>Liters:</label>
+                    <input type="number" placeholder="Enter liters"><br><br>
+
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="sheetModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('sheetModal')">&times;</span>
+                <h2>Sheet</h2>
+                <form>
+                    <label>Company Name:</label>
+                    <input type="text" placeholder="Enter company name"><br><br>
+        
+                    <label>Select Gram:</label>
+                    <select id="sheetGsmSelect" onchange="toggleSheetGSMInput()">
+                        <option value="30g">30g</option>
+                        <option value="other">Other</option>
+                    </select><br><br>
+        
+                    <div id="sheetManualGSM" style="display: none;">
+                        <label>Enter Gram:</label>
+                        <input type="number" placeholder="Enter gram manually"><br><br>
+                    </div>
+        
+                    <label>Quantity:</label>
                     <input type="number" placeholder="Enter quantity"><br><br>
+        
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+        </div>
+        
+        
 
-                    <label>Source:</label>
-                    <input type="text" placeholder="Enter source (e.g., Borewell, RO)"><br><br>
+        <div id="trayModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('trayModal')">&times;</span>
+                <h2>Tray</h2>
+                <form>
+                    <label>Date:</label>
+                    <input type="date"><br><br>
+
+                    <label>Quantity:</label>
+                    <input type="number" placeholder="Enter quantity"><br><br>
 
                     <button type="submit">Save</button>
                 </form>
@@ -294,6 +335,16 @@
                     manualGSM.style.display = "none";
                 }
             }
-        </script><br/>
+            function toggleSheetGSMInput() {
+    var sheetGsmSelect = document.getElementById('sheetGsmSelect');
+    var sheetManualGSM = document.getElementById('sheetManualGSM');
+    if (sheetGsmSelect.value === "other") {
+        sheetManualGSM.style.display = "block";
+    } else {
+        sheetManualGSM.style.display = "none";
+    }
+}
+
+        </script><br/><br/>
     </body>
 </html>
