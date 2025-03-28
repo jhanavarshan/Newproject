@@ -21,3 +21,4 @@ def products(request):
 def rawmaterials(request):
 
     return render(request, 'rawmaterials.html')
+
