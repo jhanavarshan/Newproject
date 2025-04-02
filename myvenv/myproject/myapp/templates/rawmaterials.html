@@ -48,64 +48,75 @@
             <div class="modal-content">
                 <span class="close" onclick="closeModal('powderModal')">&times;</span>
                 <h2>Powder</h2>
-                <form>
+                <form method="POST" action="{% url 'add_powder' %}">
+                    {% csrf_token %}
+                    <label>Company Name:</label>
+                    <input type="text" name="company_name" placeholder="Enter company name" required><br><br>
+        
                     <label>Quantity (g):</label>
-                    <input type="number" placeholder="Enter quantity"><br><br>
-                    
+                    <input type="number" name="quantity" placeholder="Enter quantity" required><br><br>
+        
                     <label>Select Location:</label>
-                    <select>
+                    <select name="location">
                         <option value="kolathur">Kolathur</option>
                         <option value="bangalore">Bangalore</option>
                     </select><br><br>
-
+        
                     <button type="submit">Save</button>
                 </form>
             </div>
         </div>
+        
 
         <div id="containersModal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeModal('containersModal')">&times;</span>
                 <h2>Containers</h2>
-                <form>
+                <form method="POST" action="{% url 'add_container' %}">
+                    {% csrf_token %}
+                    <label>Company Name:</label>
+                    <input type="text" name="company_name" placeholder="Enter company name" required><br><br>
+        
                     <label>Select Size:</label>
-                    <select>
+                    <select name="size">
                         <option value="500g">500g</option>
                         <option value="700g">700g</option>
                         <option value="300g">300g</option>
                     </select><br><br>
-
-                    <label>Company Name:</label>
-                    <input type="text" placeholder="Enter company name"><br><br>
-
+        
                     <label>Containers Count:</label>
-                    <input type="number" placeholder="Enter count"><br><br>
-
+                    <input type="number" name="quantity" placeholder="Enter count" required><br><br>
+        
                     <button type="submit">Save</button>
                 </form>
             </div>
         </div>
+        
 
         <div id="capModal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeModal('capModal')">&times;</span>
                 <h2>Cap</h2>
-                <form>
+                <form method="POST" action="{% url 'add_cap' %}">
+                    {% csrf_token %}
+                    <label>Company Name:</label>
+                    <input type="text" name="company_name" placeholder="Enter company name" required><br><br>
+                
                     <label>Select Size:</label>
-                    <select>
+                    <select name="size">
                         <option value="500g">500g</option>
                         <option value="700g">700g</option>
                         <option value="300g">300g</option>
                     </select><br><br>
-
-                    <label>Company Name:</label>
-                    <input type="text" placeholder="Enter company name"><br><br>
-
+                
                     <label>Cap Count:</label>
-                    <input type="number" placeholder="Enter count"><br><br>
-
+                    <input type="number" name="quantity" placeholder="Enter count" required><br><br>
+                
                     <button type="submit">Save</button>
                 </form>
+                
+
+                
             </div>
         </div>
 
@@ -231,14 +242,11 @@
             <div class="modal-content">
                 <span class="close" onclick="closeModal('bagsModal')">&times;</span>
                 <h2>Bags</h2>
-                <form>
-                    <label>Company Name:</label>
-                    <input type="text" placeholder="Enter company name"><br><br>
-
-                    <label>Count:</label>
-                    <input type="number" placeholder="Enter count"><br><br>
-
-                    <button type="submit">Save</button>
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="company_name" placeholder="Company Name" required>
+                    <input type="number" name="count" placeholder="Bag Count" required>
+                    <button type="submit" name="bag_submit">Add Bag</button>
                 </form>
             </div>
         </div>
@@ -247,14 +255,11 @@
             <div class="modal-content">
                 <span class="close" onclick="closeModal('waterModal')">&times;</span>
                 <h2>Water</h2>
-                <form>
-                    <label>Date:</label>
-                    <input type="date"><br><br>
-
-                    <label>Liters:</label>
-                    <input type="number" placeholder="Enter liters"><br><br>
-
-                    <button type="submit">Save</button>
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="date" name="date" required>
+                    <input type="number" step="0.1" name="liters" placeholder="Liters" required><br/>
+                    <button type="submit" name="water_submit">Add Water</button>
                 </form>
             </div>
         </div>
@@ -292,17 +297,43 @@
             <div class="modal-content">
                 <span class="close" onclick="closeModal('trayModal')">&times;</span>
                 <h2>Tray</h2>
-                <form>
-                    <label>Date:</label>
-                    <input type="date"><br><br>
-
-                    <label>Quantity:</label>
-                    <input type="number" placeholder="Enter quantity"><br><br>
-
-                    <button type="submit">Save</button>
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="date" name="date" required>
+                    <input type="number" name="quantity" placeholder="Tray Quantity" required>
+                    <button type="submit" name="tray_submit">Add Tray</button>
                 </form>
+                
             </div>
         </div>
+
+        <h2>Total Powder Available: {{ total_powder }}g</h2>
+<p>Kolathur: {{ kolathur_total }}g</p>
+<p>Bangalore: {{ bangalore_total }}g</p>
+
+<h2>Total Containers Available</h2>
+<ul>
+    <li>500g: {{ container_data.500g|default:"0" }}</li>
+    <li>700g: {{ container_data.700g|default:"0" }}</li>
+    <li>300g: {{ container_data.300g|default:"0" }}</li>
+</ul>
+
+<h3>Total Caps Available:</h3>
+<ul>
+    <li>500g: {{ total_caps.500g }}</li>
+    <li>700g: {{ total_caps.700g }}</li>
+    <li>300g: {{ total_caps.300g }}</li>
+</ul>
+
+
+<p>Total Bags: {{ total_bags }}</p>
+
+
+<p>Total Water Available: {{ total_water }} Liters</p>
+
+
+<p>Total Trays Available: {{ total_trays }}</p>
+
 
         <script>
             function openModal(id) {
